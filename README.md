@@ -8,6 +8,7 @@ Authors: Soo Lee (duplexa@gmail.com) & Daniel Kwon (daniel.minseok.kwon@gmail.co
 * [Prerequisites](#Prerequisites)
 * [Installed software programs](#Installed software programs)
 * [Pipeline steps](#Pipeline steps)
+* [Example commands for the pipeline steps](#Example commands for the pipeline steps)
 
 
 ## Docker image
