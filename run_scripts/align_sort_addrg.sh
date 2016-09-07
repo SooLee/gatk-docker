@@ -2,7 +2,7 @@
 
 display_usage() {
   echo -e ""
-  echo -e "This script run the Alignmet, sort and addRG steps of a variant calling pipeline based on bwa-gatk."  
+  echo -e "This script runs the Alignmet, sort and addRG steps of a variant calling pipeline based on bwa-gatk."  
   echo -e ""
   echo -e "Usage:"
   echo -e "  $0 project_indir project_outdir split_prefix RGID RGLB RGSM ncore mem"

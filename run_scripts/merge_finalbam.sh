@@ -1,7 +1,7 @@
 #!/bin/bash 
 display_usage() {
   echo -e ""
-  echo -e "This script run the Merge final bam step of a variant calling pipeline based on bwa-gatk."  
+  echo -e "This script runs the Merge final bam step of a variant calling pipeline based on bwa-gatk."  
   echo -e ""
   echo -e "Usage:"
   echo -e "  $0 project_indir project_outdir prefix chr_list_str"

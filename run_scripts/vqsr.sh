@@ -1,7 +1,7 @@
 #!/bin/bash 
 display_usage() {
   echo -e ""
-  echo -e "This script run the VQSR step of a variant calling pipeline based on bwa-gatk."  
+  echo -e "This script runs the VQSR step of a variant calling pipeline based on bwa-gatk."  
   echo -e ""
   echo -e "Usage:"
   echo -e "  $0 project_indir project_outdir group_prefix ncore mem"
