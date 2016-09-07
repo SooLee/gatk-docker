@@ -6,7 +6,7 @@ Authors: Soo Lee (duplexa@gmail.com) & Daniel Kwon (daniel.minseok.kwon@gmail.co
 * [Docker image](#Docker image)
 * [Prerequisites](#Prerequisites)
 * [Installed software programs](#Installed software programs)
-* [steps](#Steps)
+* [Pipeline steps](#Pipeline steps)
 
 
 ## Docker image
@@ -43,7 +43,7 @@ vcftools-0.1.12
 ```
 
 
-## Steps 
+## Pipeline steps 
 
 Each of the following shell scripts executes a step of the bwa-gatk-based variant calling pipeline. (In the order displayed). These scripts are under /usr/local/bin/run_scripts/ inside the container.
 
