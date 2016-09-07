@@ -1,7 +1,7 @@
 ## GATK-Docker
 These are source files used for a docker container for bwa-gatk-based variant calling pipeline.
 
-Authors: Soo Lee (duplexa@gmail.com) & Daniel Kwon (daniel.minseok.kwon@gmail.com)
+Authors: Soo Lee (duplexa@gmail.com) & Daniel Kwon (daniel.minseok.kwon@gmail.com) at Peter Park Lab, Department of Biomedical Informatics, Harvard Medical School, Boston, MA, USA.
 
 ## Table of contents
 * [Docker image](#docker-image)
