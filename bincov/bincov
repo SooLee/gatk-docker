@@ -1,0 +1,110 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+#### bincov
+#### made by Min-Seok Kwon
+#### 2015-08-13 16:19:58
+#########################
+import sys
+import os
+
+def fopen(fname):
+	if fname.endswith(".gz"):
+		import gzip
+		f1 = gzip.GzipFile(fname, "r")
+	else:
+		f1 = open(fname)
+	return f1
+
+def fileSave (path, cont, opt, gzip_flag = "n"):
+	if gzip_flag == "gz":
+		import gzip
+		f = gzip.open(path, opt)
+		f.write(cont)
+		f.close()
+	else:
+		f = file (path, opt)
+		f.write(cont)
+		f.close
+
+def initcovfile(outfile):
+	cont = "chrom\tbinpos\tdepth"
+	fileSave(outfile, cont + "\n", "w")
+
+def mk_coverage_bin(bedgfile,bin_size):
+	prev_chrom = ""
+	covbin = 0
+	cont = ""
+	outfile = bedgfile + "_" +str(bin_size)+".cov"
+
+	print "BINNING :",bedgfile
+	print "OUTPUTFILE :", outfile
+	for line in fopen(bedgfile):
+		arr = line.strip().split("\t")
+		chrom = arr[0]
+		spos = int(arr[1])
+		epos = int(arr[2])
+		try:
+			depth = long(arr[3])
+		except ValueError:
+			depth = long(float(arr[3]))
+
+		if chrom != prev_chrom :
+			print "Chromosome:",chrom
+			if prev_chrom != "":
+				cont = cont + prev_chrom + "\t" + str(sbin) + "\t" + str(covbin) + "\n"
+				fileSave(outfile, cont, "a")
+				cont = ""
+			else:
+				cont = ""
+				initcovfile(outfile)
+			sbin = 0
+			ebin = bin_size
+			covbin = 0
+
+		flag = True
+		while(flag):
+			flag = False
+			if spos >= sbin and epos <= ebin:
+				covbin += depth*(epos-spos)
+			if spos <= sbin and epos <= ebin:
+				covbin += depth*(epos-sbin)
+			if spos >= sbin and epos >= ebin:
+				covbin += depth*(ebin-spos)
+				cont = cont + chrom + "\t" + str(sbin) + "\t" + str(covbin) + "\n"
+				sbin += bin_size
+				ebin += bin_size
+				covbin = 0
+				flag = True
+			if spos <= sbin and epos >= ebin:
+				covbin += depth*(ebin-sbin)
+				cont = cont + chrom + "\t" + str(sbin) + "\t" + str(covbin) + "\n"
+				sbin += bin_size
+				ebin += bin_size
+				covbin = 0
+				flag = True
+			if epos <= sbin:
+				pass
+			if spos >= ebin:
+				cont = cont + chrom + "\t" + str(sbin) + "\t" + str(covbin) + "\n"
+				sbin += bin_size
+				ebin += bin_size
+				covbin = 0
+				flag = True
+		prev_chrom = chrom
+
+	if cont != "":
+		cont = cont + prev_chrom + "\t" + str(sbin) + "\t" + str(covbin) + "\n"
+		fileSave(outfile, cont, "a")
+
+
+if __name__ == "__main__":
+
+	if len(sys.argv) == 3:
+		bedgfile = sys.argv[1]
+		bin_size = int(sys.argv[2])
+		mk_coverage_bin(bedgfile, bin_size)
+	else:
+		print "USAGE : bincov [bed genome file] [bin size]"
+		print "ex) bincov test_wgs.bedg 100000"
+		print "output) test_wgs.bedg_100000.cov"
+	
