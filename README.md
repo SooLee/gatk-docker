@@ -4,7 +4,7 @@ These are source files used for a docker container for bwa-gatk-based variant ca
 Authors: Soo Lee (duplexa@gmail.com) & Daniel Kwon (daniel.minseok.kwon@gmail.com)
 
 ## Table of contents
-* [Docker image](#Docker image)
+* [Docker image](##Docker image)
 * [Prerequisites](#Prerequisites)
 * [Installed software programs](#Installed software programs)
 * [Pipeline steps](#Pipeline steps)
