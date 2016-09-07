@@ -15,8 +15,8 @@ Authors: Soo Lee (duplexa@gmail.com) & Daniel Kwon (daniel.minseok.kwon@gmail.co
 The docker image is stored as duplexa/gatk_env:v1 on hub.docker.com.
 
 ## Prerequisites
-
-You need the resource files in aws S3://maestro-resources/ to be mounted to the docker container as /resources/.
+* docker daemon
+* The resource files in aws S3://maestro-resources/ must be mounted to the docker container as /resources/.
 
 ## Installed software programs
 The following programs are pre-installed under /usr/local/bin/ inside the container.
@@ -52,7 +52,7 @@ Each of the following shell scripts executes a step of the bwa-gatk-based varian
 
 #### split_fastq.sh
 ```
-This script run the Split_fastq step of a variant calling pipeline based on bwa-gatk.
+This script runs the Split_fastq step of a variant calling pipeline based on bwa-gatk.
 
 Usage:
   /usr/local/bin/run_scripts/split_fastq.sh fastq_gz project_outdir mate
@@ -66,7 +66,7 @@ Arguments:
 
 #### align_sort_addrg.sh 
 ```
-This script run the Alignmet, sort and addRG steps of a variant calling pipeline based on bwa-gatk.
+This script runs the Alignmet, sort and addRG steps of a variant calling pipeline based on bwa-gatk.
 
 Usage:
   /usr/local/bin/run_scripts/align_sort_addrg.sh project_indir project_outdir split_prefix RGID RGLB RGSM ncore mem
@@ -84,7 +84,7 @@ Arguments:
 
 #### rmdup.sh
 ```
-This script run the Mark Duplicate step of a variant calling pipeline based on bwa-gatk.
+This script runs the Mark Duplicate step of a variant calling pipeline based on bwa-gatk.
 
 Usage:
   /usr/local/bin/run_scripts/rmdup.sh project_indir project_outdir split_prefix_list_str prefix mem
@@ -99,7 +99,7 @@ Arguments:
 
 #### realign.sh
 ```
-This script run the Indel Realignment step of a variant calling pipeline based on bwa-gatk.
+This script runs the Indel Realignment step of a variant calling pipeline based on bwa-gatk.
 
 Usage:
   /usr/local/bin/run_scripts/realign.sh project_indir project_outdir prefix chr ncore mem
@@ -115,7 +115,7 @@ Arguments:
 
 #### bqsr1.sh 
 ```
-This script run the BQSR (1) step of a variant calling pipeline based on bwa-gatk.
+This script runs the BQSR (1) step of a variant calling pipeline based on bwa-gatk.
 
 Usage:
   /usr/local/bin/run_scripts/bqsr1.sh project_indir project_outdir prefix chr_list_str ncore mem
@@ -131,7 +131,7 @@ Arguments:
 
 #### bqsr2.sh 
 ```
-This script run the BQSR (2) step of a variant calling pipeline based on bwa-gatk.
+This script runs the BQSR (2) step of a variant calling pipeline based on bwa-gatk.
 
 Usage:
   /usr/local/bin/run_scripts/bqsr2.sh project_indir project_bqsr_indir project_outdir prefix chr ncore mem
@@ -148,7 +148,7 @@ Arguments:
 
 #### merge_finalbam.sh 
 ```
-This script run the Merge final bam step of a variant calling pipeline based on bwa-gatk.
+This script runs the Merge final bam step of a variant calling pipeline based on bwa-gatk.
 
 Usage:
   /usr/local/bin/run_scripts/merge_finalbam.sh project_indir project_outdir prefix chr_list_str
@@ -162,7 +162,7 @@ Arguments:
 
 #### gvcf.sh
 ```
-This script run the Generate GVCF step of a variant calling pipeline based on bwa-gatk.
+This script runs the Generate GVCF step of a variant calling pipeline based on bwa-gatk.
 
 Usage:
   /usr/local/bin/run_scripts/gvcf.sh project_indir project_outdir prefix chr region ncore mem
@@ -179,7 +179,7 @@ Arguments:
 
 #### merge_gvcf.sh 
 ```
-This script run the Merge GVCF step of a variant calling pipeline based on bwa-gatk.
+This script runs the Merge GVCF step of a variant calling pipeline based on bwa-gatk.
 
 Usage:
   /usr/local/bin/run_scripts/merge_gvcf.sh project_indir project_outdir prefix region_list_str mem
@@ -194,7 +194,7 @@ Arguments:
 
 #### hc.sh 
 ```
-This script run the Haplotype Caller step of a variant calling pipeline based on bwa-gatk.
+This script runs the Haplotype Caller step of a variant calling pipeline based on bwa-gatk.
 
 Usage:
   /usr/local/bin/run_scripts/hc.sh project_indir project_outdir prefix_list_str group_prefix region ncore mem
@@ -211,7 +211,7 @@ Arguments:
 
 #### combine_hc.sh 
 ```
-This script run the Combine_hc_gvcf step of a variant calling pipeline based on bwa-gatk.
+This script runs the Combine_hc_gvcf step of a variant calling pipeline based on bwa-gatk.
 
 Usage:
   /usr/local/bin/run_scripts/combine_hc.sh project_indir project_outdir group_prefix region_list_str mem
@@ -226,7 +226,7 @@ Arguments:
 
 #### vqsr.sh 
 ```
-This script run the VQSR step of a variant calling pipeline based on bwa-gatk.
+This script runs the VQSR step of a variant calling pipeline based on bwa-gatk.
 
 Usage:
   /usr/local/bin/run_scripts/vqsr.sh project_indir project_outdir group_prefix ncore mem
@@ -239,7 +239,7 @@ Arguments:
   mem: memory (recommended: 15G).
 ```
 
-## Example commands for the pipeline steps
+## Example commands for pipeline steps
 ```
 split_fastq.sh /output/TEST.R1.fastq.gz /output/S1 R1
 split_fastq.sh /output/TEST.R2.fastq.gz /output/S1 R2
