@@ -10,6 +10,32 @@ The docker image is stored as duplexa/gatk_env:v1 on hub.docker.com.
 
 You need the resource files in aws S3://maestro-resources/ to be mounted to the docker container as /resources/.
 
+## Installed software programs
+The following programs are pre-installed under /usr/local/bin/ inside the container.
+```
+BEDtools-2.23.0
+GATK3.4
+GATK3.5
+GATK3.5n  # GATK3.5_160425_g7a7b7cd
+GATK3.6
+R
+Rscript
+VarScan  # VarScan.v2.3.8.jar in /usr/local/bin/VarScan/
+annovar  # annotate_variation.pl & convert2annovar.pl in /usr/local/bin/annovar/
+bincov   # bincov in /usr/local/bin/bincov
+bwa-0.7.8
+fastqc-0.11.3
+jdk1.6.0_45
+jdk1.7.0_71   ## default path is set to Java 1.7 but Java 1.6 and 1.8 are also available.
+jdk1.8.0_45
+mutect  # mutect-1.1.7.jar in /usr/local/bin/mutect/
+picard-1.130
+run_scripts
+samtools-1.3
+tabix-0.2.6
+vcftools-0.1.12
+```
+
 
 ## Steps 
 
