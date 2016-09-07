@@ -46,7 +46,7 @@ vcftools-0.1.12
 
 ## Pipeline steps 
 
-Each of the following shell scripts executes a step of the bwa-gatk-based variant calling pipeline. (In the order displayed). These scripts are under /usr/local/bin/run_scripts/ inside the container.
+Each of the following shell scripts executes a step of the bwa-gatk-based variant calling pipeline. (In the order displayed). These scripts are under /usr/local/bin/run_scripts/ inside the container. Each script requires an output directory to be specified. If the specified output directory does not exist, the script will create one.
 
 
 #### split_fastq.sh
@@ -238,3 +238,37 @@ Arguments:
   mem: memory (recommended: 15G).
 ```
 
+## Example commands for the pipeline steps
+```
+split_fastq.sh /output/TEST.R1.fastq.gz /output/S1 R1
+split_fastq.sh /output/TEST.R2.fastq.gz /output/S1 R2
+
+align_sort_addrg.sh /output/S1/ /output/S1.aln/ E00121_123_H7V72CCXX_5.001 L1 E00121_123_H7V72CCXX_5 S1 2 2G
+align_sort_addrg.sh /output/S1/ /output/S1.aln/ E00121_123_H7V72CCXX_6.001 L2 E00121_123_H7V72CCXX_6 S1 2 2G
+
+rmdup.sh /output/S1.aln/ /output/output.S1.rmdup/ E00121_123_H7V72CCXX_5.001,E00121_123_H7V72CCXX_6.001 S1 2G
+
+realign.sh /output/output.S1.rmdup/ /output/S1/realign/ S1 21 2 2G
+realign.sh /output/output.S1.rmdup/ /output/S1/realign/ S1 decoy 2 2G
+realign.sh /output/output.S1.rmdup/ /output/S1/realign/ S1 unmapped 2 2G
+
+bqsr1.sh /output/S1/realign /output/S1/bqsr S1 21,decoy,unmapped 2 2G
+
+bqsr2.sh  /output/S1/realign /output/S1/bqsr /output/S1/bqsr S1 21 2 2G
+bqsr2.sh  /output/S1/realign /output/S1/bqsr /output/S1/bqsr S1 decoy 2 2G
+bqsr2.sh  /output/S1/realign /output/S1/bqsr /output/S1/bqsr S1 unmapped 2 2G
+
+merge_finalbam.sh /output/S1/bqsr /output/S1/finalbam S1 21,decoy,unmapped
+
+gvcf.sh /output/S1/bqsr /output/gvcf S1 21 21:1-50000 2 2G  # use non-sample-specific output directory
+gvcf.sh /output/S1/bqsr /output/gvcf S1 21 21:50001-100000 2 2G  # use non-sample-specific output directory
+
+merge_gvcf.sh /output/gvcf/ /output/gvcf S1 21:1-50000,21:50001-100000 2G
+
+hc.sh /output/gvcf/ /output/hc S1 S 21:1-50000 2 2G  # in case of multiple samples, S1,S2,S3,... instead of S1
+hc.sh /output/gvcf/ /output/hc S1 S 21:50001-100000 2 2G # in case of multiple samples, S1,S2,S3,... instead of S1
+
+combine_hc.sh /output/hc/ /output/hc S 21:1-50000,21:50001-100000 2G
+
+vqsr.sh /output/hc /output/vqsr S 2 2G
+```
