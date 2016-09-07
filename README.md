@@ -46,7 +46,7 @@ vcftools-0.1.12
 
 ## Pipeline steps 
 
-Each of the following shell scripts executes a step of the bwa-gatk-based variant calling pipeline. (In the order displayed). These scripts are under /usr/local/bin/run_scripts/ inside the container. Each script requires an output directory to be specified. If the specified output directory does not exist, the script will create one.
+Each of the following shell scripts executes a step of the bwa-gatk-based variant calling pipeline. (In the order displayed). These scripts are under /usr/local/bin/run_scripts/ inside the container. Each script requires an output directory to be specified. If the specified output directory does not exist, the script will create one. Typing a script name without any argument will print out the usage.
 
 
 #### split_fastq.sh
