@@ -4,11 +4,11 @@ These are source files used for a docker container for bwa-gatk-based variant ca
 Authors: Soo Lee (duplexa@gmail.com) & Daniel Kwon (daniel.minseok.kwon@gmail.com)
 
 ## Table of contents
-* [Docker image](## Docker image)
-* [Prerequisites](#Prerequisites)
-* [Installed software programs](#Installed software programs)
-* [Pipeline steps](#Pipeline steps)
-* [Example commands for pipeline steps](#Example commands for pipeline steps)
+* [Docker image](#docker-image)
+* [Prerequisites](#prerequisites)
+* [Installed software programs](#installed-software-programs)
+* [Pipeline steps](#pipeline-steps)
+* [Example commands for pipeline steps](#example-commands-for-pipeline-steps)
 
 
 ## Docker image
