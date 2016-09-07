@@ -30,7 +30,7 @@ jdk1.7.0_71   ## default path is set to Java 1.7 but Java 1.6 and 1.8 are also a
 jdk1.8.0_45
 mutect  # mutect-1.1.7.jar in /usr/local/bin/mutect/
 picard-1.130
-run_scripts
+run_scripts  # contains 12 .sh scripts (each describing a step) and one .py script used by one of the .sh scripts.
 samtools-1.3
 tabix-0.2.6
 vcftools-0.1.12
@@ -39,7 +39,7 @@ vcftools-0.1.12
 
 ## Steps 
 
-Each of the following shell scripts executes a step of the bwa-gatk-based variant calling pipeline. (In the order displayed)
+Each of the following shell scripts executes a step of the bwa-gatk-based variant calling pipeline. (In the order displayed). These scripts are under /usr/local/bin/run_scripts/ inside the container.
 
 
 #### split_fastq.sh
