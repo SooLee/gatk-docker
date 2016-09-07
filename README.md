@@ -15,8 +15,8 @@ Authors: Soo Lee (duplexa@gmail.com) & Daniel Kwon (daniel.minseok.kwon@gmail.co
 The docker image is stored as duplexa/gatk_env:v1 on hub.docker.com.
 
 ## Prerequisites
-
-You need the resource files in aws S3://maestro-resources/ to be mounted to the docker container as /resources/.
+* docker daemon
+* The resource files in aws S3://maestro-resources/ must be mounted to the docker container as /resources/.
 
 ## Installed software programs
 The following programs are pre-installed under /usr/local/bin/ inside the container.
