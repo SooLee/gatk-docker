@@ -18,8 +18,8 @@ GATK3.4
 GATK3.5
 GATK3.5n  # GATK3.5_160425_g7a7b7cd
 GATK3.6
-R
-Rscript
+R        # R 3.1.2 
+Rscript  # R 3.1.2
 VarScan  # VarScan.v2.3.8.jar in /usr/local/bin/VarScan/
 annovar  # annotate_variation.pl & convert2annovar.pl in /usr/local/bin/annovar/
 bincov   # bincov in /usr/local/bin/bincov
