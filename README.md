@@ -239,7 +239,7 @@ Arguments:
   mem: memory (recommended: 15G).
 ```
 
-## Example commands for the pipeline steps
+## Example commands for pipeline steps
 ```
 split_fastq.sh /output/TEST.R1.fastq.gz /output/S1 R1
 split_fastq.sh /output/TEST.R2.fastq.gz /output/S1 R2
