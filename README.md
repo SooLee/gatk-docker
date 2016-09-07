@@ -1,10 +1,16 @@
-##### These are source files used for a docker container for bwa-gatk-based variant calling pipeline.
-##### Authors: Soo Lee (duplexa@gmail.com) & Daniel Kwon (daniel.minseok.kwon@gmail.com)
+## GATK-Docker
+These are source files used for a docker container for bwa-gatk-based variant calling pipeline.
+Authors: Soo Lee (duplexa@gmail.com) & Daniel Kwon (daniel.minseok.kwon@gmail.com)
+
+## Table of contents
+* [Docker image](#Docker image)
+* [Prerequisites](#Prerequisites)
+* [Installed software programs](#Installed software programs)
+* [steps](#Steps)
 
 
 ## Docker image
 The docker image is stored as duplexa/gatk_env:v1 on hub.docker.com.
-
 
 ## Prerequisites
 
